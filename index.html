@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌰 新农人坚果直播话术训练营</title>
+  <style>
+    :root {
+      --primary: #8B4513;
+      --primary-light: #D2691E;
+      --accent: #F4A300;
+      --accent2: #E63946;
+      --bg: #FFF8F0;
+      --card: #FFFFFF;
+      --text: #2C1810;
+      --text-muted: #7B5B3A;
+      --border: #F0D9BC;
+      --success: #2D7D46;
+      --warn: #C0392B;
+      --tag-bg: #FFF0D0;
+      --shadow: 0 4px 24px rgba(139,69,19,0.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 60%, var(--accent) 100%);
+      color: #fff;
+      padding: 28px 24px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.07) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 40%);
+    }
+    header h1 { font-size: 1.9rem; font-weight: 800; letter-spacing: 1px; position: relative; }
+    header p { margin-top: 8px; font-size: 0.95rem; opacity: 0.9; position: relative; }
+    .header-badges { display: flex; gap: 8px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+    .badge {
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    /* NAV */
+    .nav-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 16px 16px 0;
+      overflow-x: auto;
+      background: #fff;
+      border-bottom: 2px solid var(--border);
+      scrollbar-width: none;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      padding: 10px 18px;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 8px 8px 0 0;
+      white-space: nowrap;
+      transition: all 0.18s;
+    }
+    .nav-tab:hover { background: var(--tag-bg); color: var(--primary); }
+    .nav-tab.active {
+      background: var(--bg);
+      color: var(--primary);
+      border-top: 3px solid var(--accent);
+      margin-top: -1px;
+    }
+
+    /* LAYOUT */
+    .container { max-width: 960px; margin: 0 auto; padding: 24px 16px 48px; }
+
+    /* SECTION HEADER */
+    .section-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px;
+    }
+    .section-icon { font-size: 1.5rem; }
+    .section-title { font-size: 1.18rem; font-weight: 800; color: var(--primary); }
+    .section-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* CARD */
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 22px 20px;
+      margin-bottom: 18px;
+    }
+    .card-title {
+      font-size: 1rem; font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 7px;
+    }
+
+    /* SCRIPT BOX */
+    .script-box {
+      background: #FFF9EF;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 52px 16px 18px;
+      margin: 10px 0;
+      font-size: 0.93rem;
+      line-height: 1.85;
+      color: var(--text);
+      position: relative;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .script-box .label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .script-box .tip {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-style: italic;
+      display: block;
+    }
+    .btn-group {
+      position: absolute; top: 10px; right: 10px;
+      display: flex; flex-direction: column; gap: 5px;
+    }
+    .copy-btn, .refresh-btn {
+      border: none; border-radius: 6px;
+      padding: 4px 10px; font-size: 0.73rem; cursor: pointer;
+      font-weight: 600; transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .copy-btn { background: var(--accent); color: #fff; }
+    .copy-btn:hover { background: var(--primary-light); }
+    .copy-btn.copied { background: var(--success); }
+    .refresh-btn { background: #EEE; color: var(--text-muted); }
+    .refresh-btn:hover { background: var(--border); }
+
+    /* INFINITE SCROLL AREA */
+    .infinite-list { display: flex; flex-direction: column; gap: 0; }
+    .load-more-trigger {
+      height: 60px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 0.85rem;
+      cursor: pointer;
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      margin: 10px 0 20px;
+      transition: all 0.15s;
+    }
+    .load-more-trigger:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .loading-spinner {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .new-badge {
+      display: inline-block;
+      background: var(--accent2);
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 10px;
+      margin-left: 8px;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn { from { opacity:0; transform:scale(0.8); } to { opacity:1; transform:scale(1); } }
+
+    /* STEP LIST */
+    .step-list { counter-reset: step; list-style: none; }
+    .step-item { display: flex; gap: 14px; margin-bottom: 14px; }
+    .step-num {
+      min-width: 28px; height: 28px;
+      background: var(--primary); color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+    }
+    .step-content { flex: 1; }
+    .step-content strong { color: var(--primary); display: block; margin-bottom: 4px; }
+
+    /* TAG */
+    .tag {
+      display: inline-block; background: var(--tag-bg);
+      color: var(--primary); border-radius: 6px;
+      padding: 2px 10px; font-size: 0.75rem; font-weight: 600;
+      margin: 2px 3px 2px 0; border: 1px solid var(--border);
+    }
+    .tag.danger { background: #FFF0EE; color: var(--warn); border-color: #FFCCC7; }
+    .tag.ok { background: #EEFBF0; color: var(--success); border-color: #B7EBC8; }
+
+    /* TABLE */
+    .score-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .score-table th { background: var(--primary); color: #fff; padding: 9px 12px; text-align: left; }
+    .score-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+    .score-table tr:nth-child(even) td { background: #FFF8F0; }
+
+    /* SCENE SELECTOR */
+    .practice-selector { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+    .scene-btn {
+      padding: 8px 16px;
+      border: 2px solid var(--border);
+      border-radius: 20px; background: #fff;
+      color: var(--text-muted); font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .scene-btn:hover, .scene-btn.active {
+      border-color: var(--accent); background: var(--accent); color: #fff;
+    }
+    .practice-area {
+      background: #1A1A2E; border-radius: 14px; padding: 20px;
+      color: #E0E0E0; font-size: 0.93rem; line-height: 1.8; position: relative;
+    }
+    .practice-area .scene-label {
+      color: var(--accent); font-size: 0.78rem; font-weight: 700;
+      margin-bottom: 10px; display: block;
+    }
+    .practice-refresh-btn {
+      position: absolute; top: 12px; right: 14px;
+      background: rgba(244,163,0,0.2); border: 1px solid var(--accent);
+      color: var(--accent); border-radius: 6px;
+      padding: 5px 12px; font-size: 0.78rem; font-weight: 600; cursor: pointer;
+    }
+    .practice-refresh-btn:hover { background: var(--accent); color: #fff; }
+
+    /* REPLACE GRID */
+    .replace-grid {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; gap: 10px; margin-bottom: 10px;
+    }
+    .replace-item {
+      background: #FFF0EE; border: 1px solid #FFCCC7;
+      border-radius: 8px; padding: 9px 14px;
+      font-size: 0.85rem; color: var(--warn); font-weight: 500;
+    }
+    .replace-ok {
+      background: #EEFBF0; border: 1px solid #B7EBC8;
+      border-radius: 8px; padding: 9px 14px;
+      font-size: 0.85rem; color: var(--success); font-weight: 500;
+    }
+    .arrow { font-size: 1.2rem; color: var(--text-muted); text-align: center; }
+
+    /* GENERATOR */
+    .gen-form { display: flex; flex-direction: column; gap: 12px; }
+    .form-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .form-group { flex: 1; min-width: 180px; }
+    .form-group label { display: block; font-size: 0.83rem; font-weight: 600; color: var(--text-muted); margin-bottom: 5px; }
+    .form-group select, .form-group input {
+      width: 100%; padding: 9px 12px; border: 1.5px solid var(--border);
+      border-radius: 8px; font-size: 0.88rem; background: #fff; color: var(--text);
+      outline: none; transition: border 0.15s;
+    }
+    .form-group select:focus, .form-group input:focus { border-color: var(--accent); }
+    .gen-btn {
+      background: linear-gradient(90deg, var(--accent2), var(--primary-light));
+      color: #fff; border: none; border-radius: 10px;
+      padding: 13px 28px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: opacity 0.15s; align-self: flex-start;
+    }
+    .gen-btn:hover { opacity: 0.88; }
+    #gen-output { margin-top: 16px; display: none; }
+
+    /* METRICS */
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+    .metric-card {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      border-radius: 12px; padding: 16px 14px; color: #fff; text-align: center;
+    }
+    .metric-val { font-size: 1.6rem; font-weight: 800; }
+    .metric-unit { font-size: 0.75rem; opacity: 0.8; }
+    .metric-label { font-size: 0.8rem; margin-top: 4px; opacity: 0.9; }
+
+    /* TAB CONTENT */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      .replace-grid { grid-template-columns: 1fr; }
+      .arrow { display: none; }
+      .script-box { padding-right: 18px; }
+      .btn-group { position: static; flex-direction: row; margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌰 新农人坚果直播话术训练营</h1>
+  <p>专业直播电商话术 · 新农人坚果品类 · 从入门到精通</p>
+  <div class="header-badges">
+    <span class="badge">🥜 核桃 · 碧根果 · 开心果 · 夏威夷果</span>
+    <span class="badge">📱 抖音 / 快手 / 视频号</span>
+    <span class="badge">🎯 新农人专属版</span>
+  </div>
+</header>
+
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="switchTab('tab-framework', this)">📋 话术框架</button>
+  <button class="nav-tab" onclick="switchTab('tab-practice', this)">🎙️ 场景练习</button>
+  <button class="nav-tab" onclick="switchTab('tab-generator', this)">⚡ 话术生成</button>
+  <button class="nav-tab" onclick="switchTab('tab-compliance', this)">⚠️ 违规词规避</button>
+  <button class="nav-tab" onclick="switchTab('tab-metrics', this)">📊 核心指标</button>
+</div>
+
+<!-- ========== TAB 1: 话术框架 ========== -->
+<div id="tab-framework" class="tab-content active">
+<div class="container">
+  <div class="section-header">
+    <span class="section-icon">📋</span>
+    <div>
+      <div class="section-title">五段式直播话术框架</div>
+      <div class="section-desc">下滑加载更多话术变体 · 每次刷新都有新版本</div>
+    </div>
+  </div>
+
+  <!-- 第1段 -->
+  <div class="card">
+    <div class="card-title">🪝 第一段：留存钩子（0-60秒）</div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">目标：让刚进来的人不划走，停留超过60秒触发平台推荐</p>
+    <div id="hook-list" class="infinite-list"></div>
+    <div class="load-more-trigger" onclick="loadMore('hook-list', 'hook', this)">
+      ↓ 下拉加载更多留存钩子话术
+    </div>
+  </div>
+
+  <!-- 第2段 -->
+  <div class="card">
+    <div class="card-title">🥜 第二段：产品介绍（1-3分钟）</div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">目标：建立产品认知，强化新农人真实感和产地优势</p>
+    <div id="intro-list" class="infinite-list"></div>
+    <div class="load-more-trigger" onclick="loadMore('intro-list', 'intro', this)">
+      ↓ 下拉加载更多产品介绍话术
+    </div>
+  </div>
+
+  <!-- 第3段 -->
+  <div class="card">
+    <div class="card-title">💬 第三段：信任建立（3-4分钟）</div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">目标：用证据打消疑虑，促进决策</p>
+    <div id="trust-list" class="infinite-list"></div>
+    <div class="load-more-trigger" onclick="loadMore('trust-list', 'trust', this)">
+      ↓ 下拉加载更多信任建立话术
+    </div>
+  </div>
+
+  <!-- 第4段 -->
+  <div class="card">
+    <div class="card-title">🔥 第四段：价格揭晓+逼单（4-5分钟）</div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">目标：制造紧迫感，促进当场下单</p>
+    <div id="urge-list" class="infinite-list"></div>
+    <div class="load-more-trigger" onclick="loadMore('urge-list', 'urge', this)">
+      ↓ 下拉加载更多逼单话术
+    </div>
+  </div>
+
+  <!-- 第5段 -->
+  <div class="card">
+    <div class="card-title">🔄 第五段：返场留存（5分钟+）</div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">目标：维持在线人数，为下一款产品蓄势</p>
+    <div id="return-list" class="infinite-list"></div>
+    <div class="load-more-trigger" onclick="loadMore('return-list', 'return', this)">
+      ↓ 下拉加载更多返场话术
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ========== TAB 2: 场景练习 ========== -->
+<div id="tab-practice" class="tab-content">
+<div class="container">
+  <div class="section-header">
+    <span class="section-icon">🎙️</span>
+    <div>
+      <div class="section-title">场景话术速查</div>
+      <div class="section-desc">点击场景 · 刷新获取新变体 · 反复练习直到脱稿</div>
+    </div>
+  </div>
+
+  <div class="practice-selector">
+    <button class="scene-btn active" onclick="showScene('cold', this)">❄️ 冷场救场</button>
+    <button class="scene-btn" onclick="showScene('newuser', this)">👋 新粉留存</button>
+    <button class="scene-btn" onclick="showScene('troll', this)">🚫 应对黑粉</button>
+    <button class="scene-btn" onclick="showScene('quality', this)">🔍 质疑品质</button>
+    <button class="scene-btn" onclick="showScene('shipping', this)">📦 催发货</button>
+    <button class="scene-btn" onclick="showScene('compare', this)">⚖️ 比价压价</button>
+    <button class="scene-btn" onclick="showScene('holiday', this)">🎁 节日氛围</button>
+    <button class="scene-btn" onclick="showScene('peak', this)">🚀 流量高峰</button>
+  </div>
+
+  <div class="practice-area" id="scene-display">
+    <span class="scene-label" id="scene-label-text">❄️ 冷场救场话术</span>
+    <button class="practice-refresh-btn" onclick="refreshScene()">🔄 换一版</button>
+    <div id="scene-content"></div>
+  </div>
+
+  <div id="scene-history-area" style="margin-top:16px;">
+    <div id="scene-history-list" class="infinite-list"></div>
+    <div id="scene-load-more" class="load-more-trigger" style="display:none;" onclick="loadMoreScene()">
+      ↓ 加载更多该场景话术变体
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px;">
+    <div class="card-title">📝 练习自我检查清单</div>
+    <ul class="step-list">
+      <li class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>节奏感：每15-20秒是否有互动指令？</strong>
+          不能超过30秒无互动，否则平台判定直播间"无聊"降推荐
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>数字具体化：有没有用数字代替形容词？</strong>
+          ✗ "很甜" → ✓ "糖度16度，比市场平均值高23%"
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>画面感：说产品时有没有镜头演示？</strong>
+          说"薄皮"要掰开给镜头看；说"新鲜"要当场剥开尝
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>逼单三要素：限量、限时、专属</strong>
+          缺一不可。"今天直播间特价" + "只有100单" + "播完就没了"
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <strong>新农人人设：每3-5分钟强化一次身份</strong>
+          "我们自己种的"、"刚从基地发货"、"我现在就在仓库里"——真实感是最大的转化率
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- ========== TAB 3: 话术生成器 ========== -->
+<div id="tab-generator" class="tab-content">
+<div class="container">
+  <div class="section-header">
+    <span class="section-icon">⚡</span>
+    <div>
+      <div class="section-title">单品话术生成器</div>
+      <div class="section-desc">填入产品信息，一键生成完整单品讲解话术</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="gen-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>坚果品类</label>
+          <select id="nut-type">
+            <option value="核桃">核桃（薄皮核桃）</option>
+            <option value="碧根果">碧根果</option>
+            <option value="开心果">开心果</option>
+            <option value="夏威夷果">夏威夷果</option>
+            <option value="腰果">腰果</option>
+            <option value="坚果礼盒">混合坚果礼盒</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>产地</label>
+          <input type="text" id="origin" placeholder="如：新疆和田、云南普洱" value="新疆和田" />
+        </div>
+        <div class="form-group">
+          <label>直播价（元）</label>
+          <input type="number" id="price" placeholder="如：26.8" value="26.8" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>规格/重量</label>
+          <input type="text" id="spec" placeholder="如：500g、1斤装" value="500g" />
+        </div>
+        <div class="form-group">
+          <label>核心卖点</label>
+          <input type="text" id="feature" placeholder="如：薄皮易剥、新鲜现摘" value="薄皮易剥、新鲜现摘" />
+        </div>
+        <div class="form-group">
+          <label>赠品</label>
+          <input type="text" id="gift" placeholder="如：碧根果50g+优惠券" value="碧根果50g尝鲜装" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>限量数量</label>
+          <input type="number" id="stock" placeholder="如：200" value="200" />
+        </div>
+        <div class="form-group">
+          <label>目标平台</label>
+          <select id="platform">
+            <option value="抖音">抖音（快节奏+强人设）</option>
+            <option value="快手">快手（真实信任感）</option>
+            <option value="视频号">视频号（温暖私域）</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>话术风格</label>
+          <select id="style">
+            <option value="热情">热情带劲型</option>
+            <option value="质朴">质朴真实型</option>
+            <option value="专业">专业知识型</option>
+          </select>
+        </div>
+      </div>
+      <button class="gen-btn" onclick="generateScript()">⚡ 一键生成话术</button>
+    </div>
+
+    <div id="gen-output">
+      <div style="height:1px;background:var(--border);margin:20px 0;"></div>
+      <div class="section-title" style="margin-bottom:14px;">📜 生成的完整话术</div>
+      <div id="generated-script" class="script-box"></div>
+      <button class="copy-btn" style="position:static;margin-top:10px;display:inline-block;" onclick="copyGenerated()">📋 复制完整话术</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🧩 话术模块自由拼接</div>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:16px;">选择需要的模块，组合成你今天的脚本</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <button class="scene-btn" onclick="appendModule('hook')">🪝 留存钩子</button>
+      <button class="scene-btn" onclick="appendModule('origin')">🌿 产地故事</button>
+      <button class="scene-btn" onclick="appendModule('demo')">🎬 产品演示</button>
+      <button class="scene-btn" onclick="appendModule('trust')">🤝 信任背书</button>
+      <button class="scene-btn" onclick="appendModule('price')">💰 价格揭晓</button>
+      <button class="scene-btn" onclick="appendModule('urge_m')">⏰ 紧迫逼单</button>
+      <button class="scene-btn" onclick="appendModule('return_m')">🔄 返场话术</button>
+    </div>
+    <div id="module-output" style="margin-top:16px;display:none;">
+      <div class="script-box" id="module-content"></div>
+      <button class="copy-btn" style="position:static;margin-top:8px;display:inline-block;" onclick="copyModule()">📋 复制</button>
+      <button style="margin-left:8px;background:none;border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:0.78rem;cursor:pointer;" onclick="clearModule()">清空</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ========== TAB 4: 违规词规避 ========== -->
+<div id="tab-compliance" class="tab-content">
+<div class="container">
+  <div class="section-header">
+    <span class="section-icon">⚠️</span>
+    <div>
+      <div class="section-title">违规词规避指南</div>
+      <div class="section-desc">坚果类目常见违规话术 + 合规替换方案</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🚫 价格类违规词（最常被罚）</div>
+    <div class="replace-grid"><div class="replace-item">全网最低价</div><div class="arrow">→</div><div class="replace-ok">直播间今日专属价 / 我们基地直供价</div></div>
+    <div class="replace-grid"><div class="replace-item">史上最便宜</div><div class="arrow">→</div><div class="replace-ok">今年我们性价比最高的一款</div></div>
+    <div class="replace-grid"><div class="replace-item">全场最低</div><div class="arrow">→</div><div class="replace-ok">今天直播间的福利价 / 今晚特供价</div></div>
+    <div class="replace-grid"><div class="replace-item">绝对划算</div><div class="arrow">→</div><div class="replace-ok">我觉得这个价格老铁们应该会满意</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🚫 功效类违规词（坚果类目高发）</div>
+    <div class="replace-grid"><div class="replace-item">补脑、增强记忆力</div><div class="arrow">→</div><div class="replace-ok">富含Omega-3 / 核桃仁含丰富不饱和脂肪酸</div></div>
+    <div class="replace-grid"><div class="replace-item">降血脂、降血压</div><div class="arrow">→</div><div class="replace-ok">（完全不要提，坚果不是药）</div></div>
+    <div class="replace-grid"><div class="replace-item">治疗XXX、预防XXX</div><div class="arrow">→</div><div class="replace-ok">日常食用有益于均衡饮食 / 营养学家推荐的每日坚果</div></div>
+    <div class="replace-grid"><div class="replace-item">纯天然、无添加（未核实）</div><div class="arrow">→</div><div class="replace-ok">原味烘焙 / 不添加人工香精 / 配料表只有一种原料</div></div>
+    <div class="replace-grid"><div class="replace-item">减肥、帮助减肥</div><div class="arrow">→</div><div class="replace-ok">代替高糖零食的健康选择 / 健身人群的蛋白质补充</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🚫 夸大宣传类违规词</div>
+    <div class="replace-grid"><div class="replace-item">第一、最好、顶级</div><div class="arrow">→</div><div class="replace-ok">新疆/云南产区的代表性品种 / 品质受到很多回头客认可</div></div>
+    <div class="replace-grid"><div class="replace-item">100%新鲜（无法证明）</div><div class="arrow">→</div><div class="replace-ok">今年新收 / 当季直发 / 生产日期是XX月XX日</div></div>
+    <div class="replace-grid"><div class="replace-item">假一赔十（无背书）</div><div class="arrow">→</div><div class="replace-ok">有问题找我，退换我出运费 / 我们的退货率只有2%</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🚫 平台特定规则（抖音）</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+      <span class="tag danger">❌ 口头引导加微信</span>
+      <span class="tag danger">❌ 引流到站外成交</span>
+      <span class="tag danger">❌ 虚报库存数量</span>
+      <span class="tag danger">❌ 用"关爱"暗示保健功效</span>
+      <span class="tag danger">❌ 价格显示与实际不符</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <span class="tag ok">✅ 说"私信联系我"代替加微信</span>
+      <span class="tag ok">✅ 库存数字要真实</span>
+      <span class="tag ok">✅ 说"适合家庭日常食用"代替保健暗示</span>
+      <span class="tag ok">✅ 直播间价格与商品详情页一致</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🔍 实时自检口诀</div>
+    <div class="script-box" style="background:#F0F9FF;border-left-color:#3498DB;">
+<strong style="color:#2980B9;">播前自检三问：</strong>
+1. 我说的功效，有没有食品标准/检测报告支撑？→ 没有就别说
+2. 我说的价格对比，有没有可查的参照物？→ 没有就换说法
+3. 我说的数量和库存，是真实的吗？→ 不确定就不说数字</div>
+  </div>
+</div>
+</div>
+
+<!-- ========== TAB 5: 核心指标 ========== -->
+<div id="tab-metrics" class="tab-content">
+<div class="container">
+  <div class="section-header">
+    <span class="section-icon">📊</span>
+    <div>
+      <div class="section-title">新农人坚果直播核心指标</div>
+      <div class="section-desc">目标值 · 诊断标准 · 优化方向</div>
+    </div>
+  </div>
+
+  <div class="metrics-grid" style="margin-bottom:20px;">
+    <div class="metric-card"><div class="metric-val">&gt;60</div><div class="metric-unit">秒</div><div class="metric-label">平均停留时长</div></div>
+    <div class="metric-card"><div class="metric-val">&gt;5%</div><div class="metric-unit"></div><div class="metric-label">互动率</div></div>
+    <div class="metric-card"><div class="metric-val">&gt;800</div><div class="metric-unit">元/千次</div><div class="metric-label">GPM 目标值</div></div>
+    <div class="metric-card"><div class="metric-val">&gt;3%</div><div class="metric-unit"></div><div class="metric-label">支付转化率</div></div>
+    <div class="metric-card"><div class="metric-val">&gt;50%</div><div class="metric-unit"></div><div class="metric-label">自然流量占比</div></div>
+    <div class="metric-card"><div class="metric-val">&lt;5%</div><div class="metric-unit"></div><div class="metric-label">退货率上限</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🩺 数据异常诊断表</div>
+    <table class="score-table">
+      <thead><tr><th>症状</th><th>可能原因</th><th>立即动作</th></tr></thead>
+      <tbody>
+        <tr><td>在线人数急剧下滑</td><td>产品无聊 / 话术没节奏感</td><td>立刻切秒杀款 + 互动话术，先留人</td></tr>
+        <tr><td>停留时长 &lt;30秒</td><td>开场留存钩子不够强</td><td>换成"憋单话术"，5分钟内不揭示价格</td></tr>
+        <tr><td>互动率 &lt;2%</td><td>主播发出的互动指令太少</td><td>每隔15秒必须有一个"扣1/扣2"指令</td></tr>
+        <tr><td>商品点击率 &lt;5%</td><td>价格锚定没做好 / 赠品没说清</td><td>先说赠品价值，再揭示商品价格</td></tr>
+        <tr><td>转化率正常但GMV低</td><td>客单价太低 / 缺利润款</td><td>在引流款后面接一个高客单礼盒</td></tr>
+        <tr><td>退货率 &gt;8%</td><td>话术夸大 / 产品与描述不符</td><td>检查话术是否有虚假宣传；对标产品实物</td></tr>
+        <tr><td>千川ROI &lt;1.5</td><td>人群定向偏差 / 素材吸引力不足</td><td>换窄定向+新素材；降低出价让系统重新学习</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📈 新农人坚果直播间成长路径</div>
+    <ul class="step-list">
+      <li class="step-item">
+        <div class="step-num">冷</div>
+        <div class="step-content">
+          <strong>冷启动期（前30场）：别追GMV</strong>
+          目标：停留时长 &gt;45秒，互动率 &gt;3%。付费占70%，用千川拉精准用户，让算法学习你的受众画像。
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">长</div>
+        <div class="step-content">
+          <strong>成长期（30-100场）：GMV开始起量</strong>
+          流量结构调整为50%付费+50%自然。GPM目标 &gt;600元，ROI目标 &gt;2.0。培养固定粉丝群，每场直播都要有1-2款"回头客产品"。
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">熟</div>
+        <div class="step-content">
+          <strong>成熟期（100场+）：自然流量为主</strong>
+          目标自然流量占比 &gt;50%，千川ROI &gt;2.5，GPM &gt;800元。开始培养第二主播，不依赖单人。
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<script>
+// =============================================
+//  话术数据库 - 无限刷新变体池
+// =============================================
+const DB = {
+  hook: [
+    {
+      label: '核桃 · 家庭场景',
+      text: `别划走！马上要上一款我们基地今年新收的薄皮核桃，上次一秒就抢完了！\n有没有家里老人、小孩每天要补充营养的？评论区扣个"1"让我看见你！\n（等5秒，念评论名字）今天来了这么多家庭用户，你们运气真的太好了——`,
+      tip: '💡 提具体场景（家庭/补充营养/送礼），比说"好吃"留存率高3倍'
+    },
+    {
+      label: '碧根果 · 礼盒憋单',
+      text: `今天有一款产品，我憋了整整两个月才谈下来这个价格！\n想给爸妈买坚果礼盒的老铁——先别走，等我说完价格，你会后悔走了的！\n有想给长辈买礼物的扣"礼"，我看看有多少人——`,
+      tip: '💡 用"憋单"制造悬念，直播间平均停留时长可提升40%'
+    },
+    {
+      label: '夏威夷果 · 问题切入',
+      text: `大家有没有买过夏威夷果，吃着吃着发现有股哈喇味？\n那是运输时间太长导致的！今天这款是国产云南直发，现摘现发——\n吃过国产夏威夷果的老铁，评论区说说感受！`,
+      tip: '💡 用痛点问题开头，引发共鸣，评论互动快速拉升数据'
+    },
+    {
+      label: '开心果 · 稀缺感',
+      text: `这批货我只拿了500斤，卖完不补——因为这是今年最后一批新货！\n很多人说开心果买来都是上个月甚至上个季度的，但我们这个是这周刚出的。\n刚进来的老铁先点关注，一会儿价格出来，关注了才能看到专属券！`,
+      tip: '💡 限量稀缺+关注钩子组合，快速拉关注转化率'
+    },
+    {
+      label: '腰果 · 追剧零食',
+      text: `追剧的老铁举手！你们看，我手里这袋腰果——\n每颗都是完整的，没有碎的，烤出来刚好的咸香，追剧标配！\n来，今晚有在追剧的扣"追"！我看看今天直播间里有多少追剧达人——`,
+      tip: '💡 生活化场景切入，拉近主播和用户距离，评论区秒活跃'
+    },
+    {
+      label: '混合坚果 · 节日预热',
+      text: `过节送礼买什么好？我给你们一个绝对不踩雷的答案——送坚果礼盒！\n不油腻、不俗气，老人孩子都爱吃，拎出去体面还实惠。\n今年有要送礼的扣"送"，我看看需求量，看能不能再跟品牌谈一个加量版本！`,
+      tip: '💡 送礼场景触达更广泛用户，客单价也能拉得更高'
+    },
+    {
+      label: '新农人身份 · 信任钩',
+      text: `大家好，我是新疆和田的农民，我们家种了三十年核桃——\n不是什么大主播，就是把自己种的东西拿出来卖，不经过中间商。\n你们来我直播间，就相当于直接来我们果园门口买货，价格就是这么低！`,
+      tip: '💡 新农人身份就是最强的信任钩子，要经常强调'
+    },
+    {
+      label: '倒计时紧迫 · 高峰期',
+      text: `最后十分钟！今天这款碧根果的专属价再过十分钟就恢复原价了——\n还没拍的老铁，我现在再给你们最后一次机会！\n扣"最后"告诉我你还在，我看有多少人等着——`,
+      tip: '💡 倒计时话术适合直播高峰期末段，制造最后冲量'
+    },
+    {
+      label: '对比演示 · 品质验证',
+      text: `来，我现在当场做个测试！（拿起两包核桃）\n这是我们的，这是某超市的——你们看颜色，看大小，看品相。\n都是"薄皮核桃"，但差距就这么明显。\n自己看，买不买我不强求，但这个品质大家心里有数了对吧？`,
+      tip: '💡 当场对比演示，用视觉说话，比说一百句都有效'
+    },
+    {
+      label: '快手风格 · 质朴真实',
+      text: `各位老铁好，我是种果树的农民，不会说话，但保证货真价实。\n今天把我们家最好的核桃拿出来，就希望大家能吃到真正产地直发的。\n家里有老人、有孩子的兄弟姐妹，帮忙评论区扣"在"让我看到你！`,
+      tip: '💡 快手风格更偏质朴真实，不需要华丽话术，真实感就是最强的转化'
+    },
+  ],
+
+  intro: [
+    {
+      label: '新疆核桃 · 产地+演示',
+      text: `大家看（展示核桃）——这款薄皮核桃来自新疆和田，我们自家种了30亩，海拔1200米，\n光照时间比平原多6个小时，所以这个核桃仁颜色特别金黄，不苦不涩。\n\n市面上很多核桃是机器漂白过的，看着白，但有股怪味。\n你们看我这个（掰开核桃对着镜头），核桃仁是自然金黄色——\n徒手就能剥！来，我现在给大家演示——`,
+      tip: '💡 产地+数字+对比演示，信任感三连击'
+    },
+    {
+      label: '夏威夷果 · 国产差异化',
+      text: `很多人不知道：夏威夷果也可以国产！我们云南基地2018年就开始种，\n纬度跟夏威夷本岛差不多，但有一个优势——现摘现发，不走长途冷链，\n到你手里都是新鲜的。进口的在路上就要三个月……\n\n有没有觉得进口夏威夷果偶尔有哈喇味的？那就是运输时间太长了。\n我们的你放心，从出库到你手里，最长一周。`,
+      tip: '💡 国产替代进口，是新农人最强的差异化卖点'
+    },
+    {
+      label: '碧根果 · 工艺讲解',
+      text: `大家可能觉得碧根果都差不多，其实差很远。\n我们这款是低温慢烤工艺，180度烤40分钟——\n外壳能自然开口，但果仁不会烤干，一口下去外脆里嫩。\n\n你们看（展示开口碧根果），这个开口是自然的，不是机器划的。\n自然开口说明果仁成熟度刚好，划口的很多都是为了卖相强行处理的。`,
+      tip: '💡 讲工艺、讲细节，体现专业感，提升产品溢价空间'
+    },
+    {
+      label: '开心果 · 成分价值',
+      text: `开心果为什么被叫做"快乐果"？\n因为里面有一种叫做色氨酸的物质，是合成血清素的原料——\n血清素就是让你心情好的东西。\n\n当然我这里只是分享营养知识，不是说它有什么功效啊！\n但每天下午3点，你犯困、烦躁的时候，抓一把开心果，\n比喝咖啡更健康，还不影响睡眠。`,
+      tip: '💡 营养知识切入，增加产品趣味性，注意不要说成保健功效'
+    },
+    {
+      label: '腰果 · 产地品质差异',
+      text: `腰果有个秘密：同样叫腰果，来自越南的和来自印度的，口感差距非常大。\n我们这款是越南腰果，颗粒更大，含油量更高，烤出来那个香气——\n我现在打开给你们闻（开包装对着镜头）……好，画面里你们闻不到，\n但我告诉你，这是今天我直播间里吃掉最多的一款。`,
+      tip: '💡 主播现场试吃和真实感受，是最有效的产品背书'
+    },
+    {
+      label: '坚果礼盒 · 组合价值',
+      text: `这款礼盒我来拆开给大家看——（逐一展示）\n核桃、碧根果、夏威夷果、开心果、腰果、松子、巴旦木、榛子，八种。\n每种都是今年新货，用定制木质礼盒包装，内有独立小包装，新鲜不串味。\n\n你单独买这八种，最少要250块。我们礼盒全套，今天——先别说价格，\n先看送什么：附赠定制贺卡一张，可以写祝福语，还有帆布手提袋……`,
+      tip: '💡 礼盒要逐一展示内容，先堆价值感再说价格'
+    },
+    {
+      label: '新疆核桃 · 故事化',
+      text: `我从小就在这片核桃树下玩耍。\n我们家的核桃树，树龄最老的一棵有60年了——\n我爷爷种下的，现在我来卖。\n\n很多人问我为什么不去城市打工，我说这片树就是我的事业。\n好东西要让更多人吃到，这也是我做直播的原因。\n你们今天买的不只是核桃，是我们一家人一整年的心血。`,
+      tip: '💡 情感化故事增加记忆点，新农人人设最吸引的就是"真实"'
+    },
+    {
+      label: '松子 · 小众品类教育',
+      text: `松子很多人不知道怎么分好坏，我来教大家：\n好松子：颗粒饱满，颜色均匀乳白，没有发黄的，壳是薄脆的那种。\n差松子：颗粒空心，油脂含量低，嚼着没味道，有时候还有霉味。\n\n我现在剥一颗给大家看——（剥开）你们看，果仁饱满，白而不黄，\n放进嘴里——（试吃）那个松脂的香气，是天然的，不是调味料的香。`,
+      tip: '💡 品类教育话术，把观众变成"懂行的人"，更容易建立信任'
+    },
+  ],
+
+  trust: [
+    {
+      label: '退货率背书',
+      text: `不光我自己说，来看看（展示评价截图/买家秀）——\n这是上周一位广州的老铁发给我的，说买了三次了，每次都回购。\n\n我们这个账号做了两年，退货率控制在2%以内。\n如果你收到了不新鲜、或者品质有任何问题，直接找我——\n无理由退换，运费我出。\n新农人做生意靠的就是口碑，我们不靠一锤子买卖。`,
+      tip: '💡 退货率数据 + 售后承诺，比"假一赔十"更有说服力'
+    },
+    {
+      label: '检测报告背书',
+      text: `可能有老铁担心农残或者质量问题——我们每批货都有第三方检测报告。\n农残、重金属、微生物全项检测，报告放在橱窗里，大家随时可以查。\n\n我自己每天早上都要吃一把核桃，我不会拿自己每天吃的东西糊弄大家，对吧？`,
+      tip: '💡 检测报告+主播自用，双重背书，化解品质疑虑'
+    },
+    {
+      label: '老客户见证',
+      text: `我来念一下今天回购的老客户——\n（念评论区ID）这位老铁已经买了七八次了，每次都在直播间第一时间下单。\n为什么？因为他知道我们不整虚的。\n\n你们今天是第一次来，不用急着信任我，先买一小份尝尝。\n如果觉得值，下次你们也会变成这样的回头客。`,
+      tip: '💡 老客户见证 + 降低首次购买门槛，组合拳效果最好'
+    },
+    {
+      label: '现场溯源',
+      text: `大家看（转动摄像头/展示环境）——我现在就在我们仓库里，\n这些都是刚从新疆发过来的这季新货，还有果香。\n生产日期你们看（对镜头展示包装），这个月的，不是陈货。\n\n我有什么理由骗你们？你们吃到不好的第一时间就来评论区说，\n那我的账号就完了。我的信誉比你们的货款值钱多了。`,
+      tip: '💡 现场溯源话术：把自己的信誉和产品质量绑定'
+    },
+    {
+      label: '供应链透明化',
+      text: `我来给大家算一笔账：这款核桃，超市卖35元一斤，为什么？\n超市要房租、要人工、要利润，加起来是产地价的2-3倍。\n我们是产地直发，去掉中间所有环节，给到大家的就是这个价。\n\n我不跟你们说"全网最低"，我只能说，你找不到比这个更直接的货源了。`,
+      tip: '💡 供应链逻辑讲清楚，让用户觉得低价是有道理的，不是假的'
+    },
+    {
+      label: '售后承诺强化',
+      text: `跟大家说清楚我们的售后：\n第一，到货有问题，7天无理由退换，运费我来出。\n第二，觉得不好吃，直接退，我不跟你争到底好不好吃。\n第三，发错了、漏发了，补发一单，不用你退货。\n\n就这三条，够不够？觉得够的扣"够"！`,
+      tip: '💡 把售后条款具体化，比泛泛的"保证售后"更有说服力'
+    },
+  ],
+
+  urge: [
+    {
+      label: '核桃 500g · 标准逼单',
+      text: `好，我现在说价格！先别看——先看我送什么：\n买一斤送一包碧根果小零食，还有一张下次10元优惠券。\n这两样东西单独买要将近15块。\n\n今天直播间专属，一斤薄皮核桃——只要26.8元！\n（停顿2秒）我们今天只备了200单，卖完今天就没有了——\n3、2、1——上链接！冲！`,
+      tip: '💡 逼单要素：赠品价值先说 → 直播价后说 → 限量强调 → 倒计时上链接'
+    },
+    {
+      label: '礼盒 298元 · 高客单逼单',
+      text: `节假日送礼，买什么都不如送健康。这款礼盒配了八种坚果——\n核桃、碧根果、夏威夷果、开心果……定制木质礼盒，自带礼品袋，\n拎出去体面又实惠。\n\n超市同款礼盒要450元起，今天直播间298元，还包顺丰。\n前50单再送一张定制贺卡，可以写祝福语。\n有要买来送礼的扣"礼"——3、2、1，链接在购物车，冲！`,
+      tip: '💡 高客单要强调"送礼场景"，降低价格敏感度'
+    },
+    {
+      label: '夏威夷果 · 紧迫倒计时',
+      text: `最后100单！最后100单！\n你们抢的速度比我想象中快——运营说再过五分钟就恢复原价了。\n\n还没下单的老铁，现在不下单，今天就没有了！\n有没有还在犹豫的？犹豫什么？扣出来，我帮你解答——\n没问题就直接拍！倒计时开始了！3、2、1——上！`,
+      tip: '💡 极度紧迫话术，适合在线人数高峰时用，但要确保库存数字真实'
+    },
+    {
+      label: '碧根果 · 价格锚定四步',
+      text: `来，这款碧根果我们做个价格对比——\n京东旗舰店同款：59元一斤。\n超市货架：45元一斤。\n我们直播间老粉历史价：36元。\n今天新品上市庆福利——\n29.9元！500克，顺丰包邮！\n\n赠品还没说：买就送一个坚果夹，单卖12块的那种。\n没有理由拒绝！3、2、1！上链接！`,
+      tip: '💡 价格锚定四步法：对比价格逐层降低，最终直播价显得超值'
+    },
+    {
+      label: '腰果 · 情感逼单',
+      text: `今天买这款腰果，不仅仅是买一包零食——\n你是在支持一个真正靠双手劳动的农民家庭。\n我们不坑人，只做好货，你今天的信任，\n我用以后每次直播的品质来回报你。\n\n今天这款腰果，直播间价18.8元，只有今天，明天恢复原价。\n想支持我们的老铁，链接在下面，3、2、1，冲！`,
+      tip: '💡 情感化逼单适合快手平台或粉丝粘性高的账号'
+    },
+    {
+      label: '组合套餐 · 拉客单价',
+      text: `有没有一口气想把家里的坚果都备齐的老铁？\n我帮你们设计了一个最省钱的方案：\n核桃1斤 + 碧根果1斤 + 夏威夷果半斤，组合下来原价128元，\n今天套餐价79元，还包邮！\n\n单买绝对没这个划算。家里有人的直接拍套餐，一次备足一个月的量。\n3、2、1——套餐链接在购物车第二个，上！`,
+      tip: '💡 套餐组合拉客单价，同时提升用户粘性（下次还回来补货）'
+    },
+  ],
+
+  return: [
+    {
+      label: '标准返场+预告下品',
+      text: `抢到的老铁扣个"已拍"让我看到你！\n（念买家名字）感谢XX、感谢XX——手速真快！\n\n还没抢到的别着急，我去向运营申请能不能再补20单……\n（等待5秒）好消息！运营说可以再加20单，抓紧！\n\n下一款比这个还炸！一直在问夏威夷果的老铁——\n给我扣"等"，等下我先给你们讲！`,
+      tip: '💡 返场三要素：确认已购+补单福利+预告下品悬念'
+    },
+    {
+      label: '粉丝福利返场',
+      text: `非常感谢今天所有抢到的老铁！\n关注了我们的粉丝注意了——今天下播前会抽一位关注粉丝，\n免费送一斤薄皮核桃，不用抢、不用付款，直接送！\n\n还没关注的赶快点关注，现在关注还来得及！\n下一款产品五分钟后上，到时候我再说抽奖规则，别走！`,
+      tip: '💡 关注抽奖把返场时间变成拉关注的黄金窗口'
+    },
+    {
+      label: '高互动返场',
+      text: `刚才这波手速真的太猛了！300单两分钟全部抢完——\n（念最快下单的三个ID）这三位老铁反应真快！\n\n来，我们做个互动放松一下——\n你们觉得刚才这款值不值？值的扣"值"，超出预期的扣"超"！\n看看我们今天来了多少理性的老铁哈哈！`,
+      tip: '💡 互动放松可以让直播节奏有起有伏，防止观众审美疲劳'
+    },
+    {
+      label: '下品预热返场',
+      text: `好，今天最后一个压轴款——\n说实话，这款东西我本来不想拿出来，因为利润真的很薄，\n但今天来了这么多新老铁，我必须拿出来表示一下诚意。\n\n想知道是什么的，给我扣"诚意"！\n扣到100个"诚意"我就直接上——等我看看……快扣！`,
+      tip: '💡 "我本来不想拿"制造神秘感，是激活评论区最快的方法之一'
+    },
+    {
+      label: '收尾感谢返场',
+      text: `今天这场直播马上要结束了，非常感谢大家的陪伴和支持！\n\n今天一共卖出去XX单，比我预期的还要多——真的很感动。\n每一个下单的老铁，我都会仔细打包，确保品质。\n\n关注了的老铁，下次直播我会提前发通知。\n没关注的现在点一下，咱们下次见！明天晚上8点见！`,
+      tip: '💡 收尾话术：感谢+数据分享+召唤下次回看，提高复播率'
+    },
+  ],
+};
+
+// =============================================
+//  场景数据库
+// =============================================
+const SCENES = {
+  cold: {
+    label: '❄️ 冷场救场话术',
+    variants: [
+      `【直播间掉人，立刻执行】\n\nStep 1 互动话术触发：\n"哎，评论区怎么突然安静了？来来来——\n平时喜欢吃坚果的扣'1'，不怎么吃的扣'2'！\n我看看我们直播间都是什么样的老铁~"\n\nStep 2 立刻切秒杀款：\n"来，不废话了——这款碧根果50g尝鲜装，\n正常价9.9，现在直播间福利价只要4.9元！\n先让大家尝尝我们的品质，3、2、1上链接！"\n\n⚠️ 冷场超30秒 = 立刻切秒杀 + 互动话术，这要成为肌肉记忆！`,
+      `【人数下滑超过20%，触发救场模式】\n\n第一时间：提问引互动\n"来，我问大家一个问题——你们平时吃坚果，\n是当零食吃还是当正餐配菜？评论区打出来！"\n\n等30秒互动后：\n"哇，原来这么多人是零食党！那你们今天真的来对了——\n我们这款腰果就是专门为追剧零食设计的，\n咸香不腻，吃一粒停不下来。"\n\n接着上秒杀款，把人气拉回来！`,
+      `【2分钟无人互动的极端冷场处理】\n\n马上开福袋！\n"好！今天开心，我来开一个福袋！\n100个人参与就开奖，奖品是一包100g的核桃仁！\n关注+评论'开'就能参与，来！"\n\n同时说：\n"刚进来的老铁先别走，福袋倒计时两分钟，\n参与的先停下来等一等，等我开完奖咱们再继续——"`,
+    ]
+  },
+  newuser: {
+    label: '👋 新粉留存话术',
+    variants: [
+      `【新用户进入，10秒留住他】\n\n"欢迎新来的老铁！我是新农人小X，自家种坚果的——\n不是中间商，所以价格特别实惠。\n先点个关注，今天直播间有三款主打产品，\n其中有一款，我保证你看完会截图发给家人！"\n\n强化关注话术：\n"今天下播前抽一位关注了的老铁，\n免费送一斤核桃！有没有想要的扣'要'！"`,
+      `【多人同时涌入时，批量新粉欢迎话术】\n\n"哇，一波新老铁来了！欢迎欢迎！\n我先自我介绍一下：我是新疆和田种核桃的农民，\n来直播是因为想让城里的老铁都能吃到真正产地直发的坚果。\n\n今天我们播到晚上X点，中间有三次福利，\n每次福利都只在我直播间有，别的地方找不到。\n关注了的第一时间收到开播通知——来，关注键在这里，点！"`,
+      `【深夜场留住夜猫子新用户】\n\n"这么晚了还来的老铁，都是夜猫子——跟我一样！\n来，深夜福利时间，今晚最后X单特价款，\n天亮就恢复原价了。\n\n刚进来的老铁先别走，等我说完你会庆幸没划走的。\n喜欢吃坚果追剧的扣'夜猫子'——我看看今晚来了多少同类！"`,
+    ]
+  },
+  troll: {
+    label: '🚫 应对黑粉话术',
+    variants: [
+      `【核心原则：不纠缠、不激动、不过度解释】\n\n遇到"假货/品质差"质疑：\n"这位老铁，你说得我很重视。我们是自家基地，\n检测报告直播间橱窗里有，随时可以查。\n如果你之前买过有问题，可以私信我，直接退换。"\n（立刻转向其他评论，不继续纠缠）\n\n遇到骂人/带节奏：\n直接屏蔽，不回应。主播眼神不往那条评论看。\n继续说："不理他们，来，刚才哪位老铁在问价格来着？"`,
+      `【面对恶意比价：】\n\n"XX老铁说别家更便宜——我承认可能有更便宜的。\n但我想问你：你知道那家便宜在哪里吗？\n产地不一样、等级不一样、新鲜程度不一样，价格当然不一样。\n我这里你可以来质疑品质，但不能拿不同产品的价格来比。\n\n欢迎你买完对比，如果我们不如他家，我退你两倍差价。"\n（这种自信的回答反而会打消其他人的疑虑）`,
+      `【面对"广告"质疑：】\n\n"说我打广告的老铁——我就是在卖东西，这就是广告。\n但我的广告是用真实产品做的，不是PS图。\n你现在看到的就是我手里的实物，你买到的就是这个。\n\n如果你不想买，没关系，看看也行，我欢迎所有人来直播间。\n但如果你要影响其他老铁的判断，那我只能把你移出去了。"\n（语气平静，不激动，展现自信和底气）`,
+    ]
+  },
+  quality: {
+    label: '🔍 质疑品质应对',
+    variants: [
+      `【观众说"看起来不新鲜/颜色不对"】\n\n当场演示反驳法：\n"好，我来当场给大家看——（拿起产品对着镜头）\n你看这个核桃仁，金黄色，没有哈喇味的那种发黑。\n我现在直接尝一口——（吃）\n香，没有苦味，这就是新鲜的标准。"\n\n数据背书：\n"我们这款今年收货时间是X月，\n生产日期就在外包装上，大家可以自己对。\n退货率2%以内，有问题一律退换。"`,
+      `【观众说"比超市的差"】\n\n"超市的坚果从工厂到超市要经过几道中间环节，\n最快也要两周到一个月才能上架。\n我们是从产地直发，最长一周到你手里。\n\n新鲜度上，我不跟超市比，我赢定了。\n（对镜头）大家看这个，我现在剥开——\n闻一下，有没有那种新鲜坚果特有的油脂香气？\n超市里放了一个月的是没有这个香气的。"`,
+      `【观众说"买过一次不好吃"】\n\n"这位老铁说之前买过一次不好吃——这个我认真问一下：\n是什么产品，大概是什么时候买的？\n（等回复）……我们确实有极少数情况会出现批次差异，\n这是农产品的客观问题，没办法100%规避。\n\n但我们的做法是：只要你觉得不满意，不需要理由，直接退。\n今天在场的老铁，我给你一个承诺——\n买来不满意，七天内找我，全额退款，运费我出。\n有这个承诺，还有什么好怕的？"`,
+    ]
+  },
+  shipping: {
+    label: '📦 催发货应对',
+    variants: [
+      `【统一回答发货时间】\n\n"XX老铁问发货——我统一回答一下：\n今天下午3点前的订单，今天发；3点后的，明天上午发。\n我们发顺丰/京东快递，一般2-3天到。\n广东、江浙沪的老铁基本隔天就到！"\n\n未发货超时处理：\n"我看到有老铁说等了好几天——先别急，\n高峰期有时会慢，我给运营号私信，\n今天专门帮你们查一遍单号。好不好？"`,
+      `【有人问能否指定发货时间】\n\n"指定发货时间这个我帮你们问一下运营……\n（假装联系）运营说如果是当天下午3点前下单的，\n可以在备注里写'急发'，我们优先处理。\n急需用的老铁，备注一下，我们保你两天内到货。"`,
+      `【节假日发货问题】\n\n"节假日期间，快递公司会放假，这个我没有办法控制。\n但我们仓库这边会在节前提前发出，争取节前到货。\n如果实在来不及的，节后第一天就发，不会压单。\n\n有急用的老铁，节前三天一定要下单，我保证节前出库，\n快递那边就看运气了——但大多数情况下能赶到的！"`,
+    ]
+  },
+  compare: {
+    label: '⚖️ 比价压价应对',
+    variants: [
+      `【价值重塑法，不打价格战】\n\n"XX老铁说别家更便宜——我相信你说的。\n我只能说我们的贵在哪里：\n我们是基地直发，每一批货出库前自己先尝，\n不合格的绝对不发出去。\n价格差了5块钱，但你不用担心收到问题货，\n这5块钱保你放心，值不值？"`,
+      `【同品不同质反驳】\n\n"你说的那家我去看过——产地不一样。\n我们是新疆和田，他们是新疆阿克苏，两个产地品质不一样。\n\n光说便宜没用，你要看：产地、等级、新鲜程度、售后。\n四个指标都比我强，我认输，我帮你拼那家去。\n但如果只有价格便宜，那我不跟。"`,
+      `【小幅让利收单法】\n\n"好，我问一下运营，今天能不能给老铁们再优惠2块——\n（假装等待）运营说这是最后底线了，\n再便宜我真的赔本了，就按这个价。\n今天最后XX单，要的扣'要'！\n扣了之后我等你一分钟，一分钟内下单才算！"`,
+    ]
+  },
+  holiday: {
+    label: '🎁 节日氛围话术',
+    variants: [
+      `【送礼场景切入】\n\n"过节要到了——你们给爸妈买礼物了吗？\n现在年轻人送礼最大的误区就是送烟酒，\n但你爸妈其实最需要的是健康。\n这款坚果礼盒，八种坚果，定制礼盒，\n拎出去比买烟酒还体面，价格还只有一半。\n有没有要给长辈买的？扣'孝'！"`,
+      `【年货组合推法】\n\n"今年年货季，我给大家推一个最划算的年货方案：\n买两件礼盒，一件自己吃，一件送人，\n今天拍两件直接减XX元，还送定制手提袋。\n春节前发货，时间来得及！\n有要囤年货的老铁，现在开始拍，\n我帮你们在备注写'年货'，优先打包！"`,
+      `【节后回礼场景】\n\n"节假日收礼了之后，回礼是个大学问。\n现在送水果送的人太多了，送坚果礼盒既健康又有档次。\n我们这款礼盒配了定制贺卡，可以写祝福语，\n对方收到了会觉得很用心。\n有要回礼的老铁扣'回礼'——我看看需求量，\n看能不能给你们申请一个专属折扣！"`,
+    ]
+  },
+  peak: {
+    label: '🚀 流量高峰承接',
+    variants: [
+      `【在线人数快速上升，切爆款承接流量】\n\n（先快速收尾当前产品）\n"已经拍了的老铁扣'已拍'！\n还没拍的——最后X单，3、2、1，上！"\n\n（立刻欢迎新人）\n"刚进来的老铁，欢迎！我是新农人小X，自家种坚果，不是中间商。\n先点关注，一会儿有更大的福利！"\n\n（互动催数据）\n"人越来越多了！新来的老铁——\n点个关注的扣'关'，老粉扣'老'！"`,
+      `【千川流量涌入，精准承接话术】\n\n"欢迎从短视频来的老铁！\n你们看到的那个视频里说的产品，就是我现在手里这个。\n我现在现场给你们看——（展示产品）\n和视频里一样，没有任何PS，就是这个品质。\n直播间价格比视频里还便宜，因为省去了中间环节。\n来，有兴趣的先点关注，链接在购物车！"`,
+      `【高峰期拉人气话术连击】\n\n"来！我看现在直播间人很多，做个快速互动——\n第一次来我直播间的扣'新'！\n已经买过我们产品的扣'老'！\n\n（等10秒，念评论）哇，新老铁这么多！欢迎欢迎！\n老铁们帮我喊一下，让新来的老铁知道我们这里的品质如何！\n（等互动刷屏）\n\n谢谢老铁们！新来的老铁，他们说的就是事实，\n现在直接拍，不会后悔的！"`,
+    ]
+  },
+};
+
+// =============================================
+//  核心逻辑
+// =============================================
+let loadCounts = {};
+let sceneCurrent = 'cold';
+let sceneVariantIndex = {};
+
+// 初始化：每个框架区域加载前两条
+function init() {
+  ['hook','intro','trust','urge','return'].forEach(key => {
+    loadCounts[key] = 0;
+    loadInitial(key + '-list', key);
+  });
+
+  // 初始化场景
+  Object.keys(SCENES).forEach(k => sceneVariantIndex[k] = 0);
+  showScene('cold', document.querySelector('.scene-btn'));
+}
+
+function loadInitial(listId, key) {
+  const list = document.getElementById(listId);
+  const items = DB[key];
+  const count = Math.min(2, items.length);
+  for (let i = 0; i < count; i++) {
+    list.appendChild(createScriptItem(items[i], key, i, false));
+    loadCounts[key] = count;
+  }
+}
+
+function loadMore(listId, key, triggerEl) {
+  const list = document.getElementById(listId);
+  const items = DB[key];
+  const start = loadCounts[key];
+
+  // 显示加载动画
+  triggerEl.innerHTML = '<span class="loading-spinner"></span>生成新话术变体中...';
+
+  setTimeout(() => {
+    // 随机打乱顺序，从已有池中随机选2-3条变体（循环）
+    const batchSize = 2;
+    for (let i = 0; i < batchSize; i++) {
+      const idx = (start + i) % items.length;
+      list.appendChild(createScriptItem(items[idx], key, start + i, true));
+    }
+    loadCounts[key] = start + batchSize;
+    triggerEl.innerHTML = '↓ 下拉继续加载更多话术变体';
+  }, 600);
+}
+
+function createScriptItem(item, key, index, isNew) {
+  const div = document.createElement('div');
+  div.className = 'script-box';
+  div.style.animation = isNew ? 'fadeIn 0.4s ease' : '';
+
+  const labelEl = document.createElement('span');
+  labelEl.className = 'label';
+  labelEl.textContent = item.label;
+  if (isNew) {
+    const badge = document.createElement('span');
+    badge.className = 'new-badge';
+    badge.textContent = 'NEW';
+    labelEl.appendChild(badge);
+  }
+
+  const textEl = document.createElement('div');
+  textEl.textContent = item.text;
+  textEl.style.lineHeight = '1.85';
+
+  const tipEl = document.createElement('span');
+  tipEl.className = 'tip';
+  tipEl.textContent = item.tip;
+
+  const btnGroup = document.createElement('div');
+  btnGroup.className = 'btn-group';
+
+  const copyBtn = document.createElement('button');
+  copyBtn.className = 'copy-btn';
+  copyBtn.textContent = '复制';
+  copyBtn.onclick = function() {
+    navigator.clipboard.writeText(item.text).then(() => {
+      copyBtn.textContent = '已复制✓';
+      copyBtn.classList.add('copied');
+      setTimeout(() => { copyBtn.textContent = '复制'; copyBtn.classList.remove('copied'); }, 2000);
+    });
+  };
+
+  const refreshBtn = document.createElement('button');
+  refreshBtn.className = 'refresh-btn';
+  refreshBtn.textContent = '🔄 换一版';
+  refreshBtn.onclick = function() {
+    // 从pool中随机取一条替换当前
+    const pool = DB[key];
+    const newItem = pool[Math.floor(Math.random() * pool.length)];
+    textEl.textContent = newItem.text;
+    labelEl.firstChild.textContent = newItem.label;
+    tipEl.textContent = newItem.tip;
+    // 新Badge
+    const b = document.createElement('span');
+    b.className = 'new-badge';
+    b.textContent = 'NEW';
+    labelEl.appendChild(b);
+    setTimeout(() => b.remove(), 3000);
+  };
+
+  btnGroup.appendChild(copyBtn);
+  btnGroup.appendChild(refreshBtn);
+
+  div.appendChild(labelEl);
+  div.appendChild(textEl);
+  div.appendChild(tipEl);
+  div.appendChild(btnGroup);
+
+  return div;
+}
+
+// 场景练习
+function showScene(key, btn) {
+  if (btn) {
+    document.querySelectorAll('.scene-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  sceneCurrent = key;
+  const scene = SCENES[key];
+  if (!sceneVariantIndex[key]) sceneVariantIndex[key] = 0;
+  document.getElementById('scene-label-text').textContent = scene.label;
+  document.getElementById('scene-content').textContent = scene.variants[sceneVariantIndex[key]];
+
+  // 清空历史区域
+  document.getElementById('scene-history-list').innerHTML = '';
+  document.getElementById('scene-load-more').style.display = 'flex';
+}
+
+function refreshScene() {
+  const key = sceneCurrent;
+  const scene = SCENES[key];
+  // 切换到下一个变体
+  sceneVariantIndex[key] = (sceneVariantIndex[key] + 1) % scene.variants.length;
+
+  // 把当前内容推到历史
+  const histList = document.getElementById('scene-history-list');
+  const oldText = document.getElementById('scene-content').textContent;
+  if (oldText.trim()) {
+    const oldBox = document.createElement('div');
+    oldBox.className = 'script-box';
+    oldBox.style.animation = 'fadeIn 0.3s ease';
+    oldBox.style.opacity = '0.7';
+
+    const oldLabel = document.createElement('span');
+    oldLabel.className = 'label';
+    oldLabel.textContent = '历史版本 · ' + scene.label;
+    oldBox.appendChild(oldLabel);
+
+    const oldContent = document.createElement('div');
+    oldContent.textContent = oldText;
+    oldBox.appendChild(oldContent);
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'copy-btn';
+    copyBtn.style.position = 'absolute';
+    copyBtn.style.top = '10px';
+    copyBtn.style.right = '10px';
+    copyBtn.textContent = '复制';
+    copyBtn.onclick = () => navigator.clipboard.writeText(oldText);
+    oldBox.appendChild(copyBtn);
+
+    histList.insertBefore(oldBox, histList.firstChild);
+  }
+
+  // 显示新变体
+  document.getElementById('scene-content').textContent = scene.variants[sceneVariantIndex[key]];
+  document.getElementById('scene-content').style.animation = 'fadeIn 0.3s ease';
+}
+
+function loadMoreScene() {
+  const key = sceneCurrent;
+  const scene = SCENES[key];
+  const btn = document.getElementById('scene-load-more');
+  btn.innerHTML = '<span class="loading-spinner"></span>加载中...';
+
+  setTimeout(() => {
+    const histList = document.getElementById('scene-history-list');
+    // 随机取一条变体
+    const idx = Math.floor(Math.random() * scene.variants.length);
+    const text = scene.variants[idx];
+
+    const box = document.createElement('div');
+    box.className = 'script-box';
+    box.style.animation = 'fadeIn 0.4s ease';
+
+    const label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = scene.label + ' · 变体' + (histList.children.length + 1);
+    const badge = document.createElement('span');
+    badge.className = 'new-badge';
+    badge.textContent = 'NEW';
+    label.appendChild(badge);
+    box.appendChild(label);
+
+    const content = document.createElement('div');
+    content.textContent = text;
+    box.appendChild(content);
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'copy-btn';
+    copyBtn.style.position = 'absolute';
+    copyBtn.style.top = '10px';
+    copyBtn.style.right = '10px';
+    copyBtn.textContent = '复制';
+    copyBtn.onclick = () => navigator.clipboard.writeText(text);
+    box.appendChild(copyBtn);
+
+    histList.appendChild(box);
+    btn.innerHTML = '↓ 加载更多该场景话术变体';
+  }, 500);
+}
+
+// =============================================
+//  话术生成器
+// =============================================
+function generateScript() {
+  const nut = document.getElementById('nut-type').value;
+  const origin = document.getElementById('origin').value || '新疆';
+  const price = document.getElementById('price').value || '26.8';
+  const spec = document.getElementById('spec').value || '500g';
+  const feature = document.getElementById('feature').value || '新鲜好吃';
+  const gift = document.getElementById('gift').value || '小零食';
+  const stock = document.getElementById('stock').value || '200';
+  const platform = document.getElementById('platform').value;
+  const style = document.getElementById('style').value;
+
+  const hookPool = {
+    '热情': [
+      `别划走！马上上一款${origin}的${nut}，之前一上就秒！家里需要的评论区扣"1"！`,
+      `来来来！今天这款${nut}是我播了两年最好的一批，错过今天不知道等到什么时候！`,
+    ],
+    '质朴': [
+      `大家好，我是种${nut}的农民，今天把最好的${nut}带给大家。`,
+      `我不会说漂亮话，就是种地的，但货是真的好——来，你们看看。`,
+    ],
+    '专业': [
+      `今天这款${nut}，我要从产地到品质给大家好好讲一讲，大家判断值不值。`,
+      `来，我先给大家科普一下${nut}的挑选标准，再说我们为什么值这个价格。`,
+    ]
+  };
+
+  const hook = hookPool[style][Math.floor(Math.random() * hookPool[style].length)];
+
+  const script = `【🪝 留存钩子】
+${hook}
+家里有需要的，或者自己喜欢吃坚果的——评论区扣"1"！
+（等互动，念名字）好，这么多老铁感兴趣，我们正式开始——
+
+【🥜 产品介绍】
+大家看（展示${nut}）——这款${nut}来自${origin}，${feature}。
+我们自己基地种的，不经过中间商，从地头直接到你手里。
+（演示/试吃）你们看这个——展示特点，
+跟超市卖的那种相比，最大的区别就是新鲜，当季现发。
+
+【🤝 信任建立】
+我们这个账号做了两年，退货率控制在2%以内。
+你收到了有任何问题，直接找我，退换我出运费。
+（展示好评截图）这是上周老铁发给我的，已经第三次回购了。
+新农人做生意靠的就是口碑，一锤子买卖我们不做。
+
+【💰 价格揭晓】
+好，先别看价格——先看我送什么：
+买${spec}，送${gift}，光赠品就值好几块钱。
+今天直播间专属——${spec}只要 ¥${price}！
+（停顿2秒）这个价格，值不值？
+
+【⏰ 逼单成交】
+我们今天只备了${stock}单，卖完今天就没了——
+3、2、1——上链接！冲冲冲！
+（念下单的人名字）恭喜XX、XX——手速真快！
+
+【🔄 返场留存】
+抢到的扣"已拍"！
+（念买家名字）感谢大家！
+下一款更炸，${platform === '抖音' ? '喜欢坚果类的老铁' : '我们的老粉'}别走——扣"等"！`;
+
+  document.getElementById('generated-script').textContent = script;
+  document.getElementById('gen-output').style.display = 'block';
+}
+
+function copyGenerated() {
+  const text = document.getElementById('generated-script').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    alert('话术已复制到剪贴板！');
+  });
+}
+
+// =============================================
+//  模块拼接
+// =============================================
+const MODULE_DB = {
+  hook: `【🪝 留存钩子】\n别划走！下一个产品是今天的王炸——上次一上架就秒光。\n有谁也遇到过（痛点场景）？有的话评论区扣"1"！\n（等互动，念评论）这个产品就是专门来解决它的。`,
+  origin: `【🌿 产地故事】\n我们这款坚果来自（产地），我们自家种了X亩。\n当地特殊的气候让坚果（特点），跟市面上流通的版本不一样。\n我现在人就在基地/仓库里——你们看（展示环境）`,
+  demo: `【🎬 产品演示】\n来，我现在给大家现场演示——（拿起产品）\n你们看这个（特点展示），（操作演示）。\n我当场尝一口——（试吃）\n香，没有苦涩味，这就是新鲜的标准。`,
+  trust: `【🤝 信任背书】\n不光我说——（展示好评截图/回购数据）\n我们账号做了两年，退货率只有2%以内。\n有问题找我直接说，退换我出运费，不废话。`,
+  price: `【💰 价格揭晓】\n先看我送什么：（赠品1）+（赠品2），单独买要XX元。\n今天直播间专属——只要XX元！\n（停顿2秒）这个价格，你们满意吗？`,
+  urge_m: `【⏰ 紧迫逼单】\n今天只有（数量）单！\n3、2、1——上链接！冲！\n前XX单加送（额外赠品），快！`,
+  return_m: `【🔄 返场留存】\n抢到的扣"已拍"！\n（念买家名字）恭喜XX！\n下一款比这个还炸，一直在问（产品名）的老铁——扣"等"！`
+};
+
+let moduleText = '';
+function appendModule(key) {
+  moduleText += (moduleText ? '\n\n' : '') + MODULE_DB[key];
+  document.getElementById('module-content').textContent = moduleText;
+  document.getElementById('module-output').style.display = 'block';
+}
+function copyModule() {
+  navigator.clipboard.writeText(moduleText).then(() => alert('已复制到剪贴板！'));
+}
+function clearModule() {
+  moduleText = '';
+  document.getElementById('module-output').style.display = 'none';
+}
+
+// =============================================
+//  Tab 切换
+// =============================================
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// =============================================
+//  页面初始化
+// =============================================
+window.addEventListener('DOMContentLoaded', init);
+</script>
+
+</body>
+</html>
